@@ -27,7 +27,7 @@ android {
         release {
             storeFile file("../keystore.jks")
             storePassword "ewell123"
-            keyAlias "Baseframe"
+            keyAlias "BaseFrame"
             keyPassword "ewell123"
         }
     }
