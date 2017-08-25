@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- 包含none, loading, empty, error 布局的ViewAnimator -->
+
+<ViewAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/state_layout"
+    android:inAnimation="@android:anim/fade_in"
+    android:outAnimation="@android:anim/fade_out">
+    <!-- 这里的进入和退出动画, 指的是loading 等 布局显示隐藏时候的动画 比如loading显示的时候是从渐进, loading隐藏是渐出 -->
+
+    <!-- none的layout 由于ViewAnimator会自动加载第一个子布局, 所以讲none放在第一个-->
+    <include layout="@layout/none_layout"></include>
+
+    <!-- 正在加载的layout -->
+    <include layout="@layout/loading_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></include>
+
+    <!-- empty 的layout -->
+    <include layout="@layout/empty_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></include>
+
+    <!-- error 的layout -->
+    <include layout="@layout/error_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></include>
+
+</ViewAnimator>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cc.ewell.baseframe">
+
+    <application
+        android:name="cc.ewell.baseframe.EApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.App">
+
+
+
+
+        <!-- 下面是APP中自己写的Activity -->
+        <!-- ************************* Fan Start **************************** -->
+        <activity
+            android:name="cc.ewell.baseframe.ui.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Fullscreen"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+
+        <!-- ************************* Super Fan Start **************************** -->
+        <activity
+            android:name="cc.ewell.baseframe.ui.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- ************************* DC Start **************************** -->
+
+
+    </application>
+
+</manifest>

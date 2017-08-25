@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/common_header_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_header_height">
+
+        <LinearLayout
+            android:id="@+id/header_left_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingRight="@dimen/length_8dp"
+            android:paddingTop="@dimen/common_header_top_distance">
+
+            <ImageView
+                android:id="@+id/header_left_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/length_8dp" />
+
+            <TextView
+                android:id="@+id/header_left_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/length_8dp"
+                android:text="返回"
+                android:textColor="@color/common_header_textcolor"
+                android:textSize="@dimen/text_size_small_14dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:maxWidth="160dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="@dimen/common_header_top_distance"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/common_header_textcolor"
+            android:textSize="@dimen/text_size_big_18dp"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/header_right_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/margin_left"
+            android:paddingTop="@dimen/common_header_top_distance"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/header_right_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:paddingBottom="4dp"
+                android:paddingRight="@dimen/margin_right"
+                android:paddingTop="4dp"
+                android:text="编辑"
+                android:textColor="@color/common_header_textcolor"
+                android:textSize="@dimen/text_size_small_14dp" />
+
+            <ImageView
+                android:id="@+id/header_right_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="@dimen/margin_right"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/toolbar_divider"
+        layout="@layout/line_layout" />
+</LinearLayout>
