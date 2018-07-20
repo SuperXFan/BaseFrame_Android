@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">common</string>
+    <string name="no_net_conneted">暂时连接不上网络，请稍后再试</string>
+    <string name="no_server_net_conneted">连接服务失败，请稍后再试</string>
+</resources>

@@ -1,0 +1,6 @@
+<resources>
+
+    <!--APP用到的字符串-->
+    <string name="app_name">BaseFrame</string>
+
+</resources>
