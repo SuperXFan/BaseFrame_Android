@@ -7,11 +7,10 @@
       <module fileurl="file://E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\Baseframe_Andorid.iml" filepath="E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\Baseframe_Andorid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://E:\Android_Workspace\as_workspace\git\GitLab\backup\Baseframe_Andorid\app\app.iml" filepath="E:\Android_Workspace\as_workspace\git\GitLab\backup\Baseframe_Andorid\app\app.iml" />
-      <module fileurl="file://E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\app\app.iml" filepath="E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
-      <module fileurl="file://E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\common\common.iml" filepath="E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\common\common.iml" />
       <module fileurl="file://E:\Android_Workspace\as_workspace\git\GitLab\backup\Baseframe_Andorid\common\common.iml" filepath="E:\Android_Workspace\as_workspace\git\GitLab\backup\Baseframe_Andorid\common\common.iml" />
       <module fileurl="file://$PROJECT_DIR$/componentbridgebase/componentbridgebase.iml" filepath="$PROJECT_DIR$/componentbridgebase/componentbridgebase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/login/login.iml" filepath="$PROJECT_DIR$/login/login.iml" />
     </modules>
   </component>
 </project>

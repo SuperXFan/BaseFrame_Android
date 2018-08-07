@@ -11,7 +11,7 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         //classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'//远程apt工具地址
-
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'//Butter Knife in a library
     }
 }
 

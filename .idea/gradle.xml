@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/componentbridgebase" />
+            <option value="$PROJECT_DIR$/login" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

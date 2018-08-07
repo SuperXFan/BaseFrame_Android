@@ -72,6 +72,7 @@ public class RxBaseApi {
         if (headers == null) {
             headers = new HashMap<>();
         }
+        //配置公共header部分
         String UUID = CommonAccountUtil.getUserId(context);
         String SSID = UUIDUtil.generateShortUuid();
         String SEQ = UUIDUtil.getUUID();

@@ -18,8 +18,12 @@ android {
             abiFilters "armeabi", "armeabi-v7a", "x86_64"
         }
 
-        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true//annotationProcessor   注解需要 dagger
+                arguments = [ moduleName : project.getName() ]//arouter每个module需要
+            }
+        }
     }
 
     lintOptions{
@@ -47,6 +51,7 @@ android {
     dexOptions {
         javaMaxHeapSize "1g"
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -57,6 +62,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     implementation project(':common')
+    implementation project(':login')
 
     // Dagger
     //必须配置，dagger缺少 javax.annotation包
@@ -70,5 +76,10 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.0'
     implementation 'com.google.dagger:dagger:2.7'
 
-    implementation 'com.jakewharton:butterknife:7.0.1'
+    //butterknife
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    //arouter每个module需要
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 }

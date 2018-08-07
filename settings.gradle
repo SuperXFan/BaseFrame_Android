@@ -1,1 +1,1 @@
-include ':app', ':common', ':componentbridgebase'
+include ':app', ':common', ':componentbridgebase', ':login'

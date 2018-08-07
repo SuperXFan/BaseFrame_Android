@@ -17,17 +17,10 @@
 
 
         <!-- 下面是APP中自己写的Activity -->
-        <!-- ************************* Fan Start **************************** -->
-        <activity
-            android:name="cc.ewell.baseframe.ui.login.LoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Fullscreen"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-
 
         <!-- ************************* Super Fan Start **************************** -->
         <activity
-            android:name="cc.ewell.baseframe.ui.splash.SplashActivity"
+            android:name="cc.ewell.baseframe.business.splash.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Fullscreen">
             <intent-filter>
@@ -36,7 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- ************************* DC Start **************************** -->
 
 
     </application>

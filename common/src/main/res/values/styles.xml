@@ -21,4 +21,13 @@
         <item name="android:windowDisablePreview">true</item>
     </style>
 
+
+    <style name="loading_progress_style">
+        <item name="android:maxWidth">@dimen/loading_progress_width</item>
+        <item name="android:maxHeight">@dimen/loading_progress_height</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_loading_progress</item>
+        <item name="android:minWidth">@dimen/loading_progress_width</item>
+        <item name="android:minHeight">@dimen/loading_progress_height</item>
+    </style>
+
 </resources>
