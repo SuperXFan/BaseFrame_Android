@@ -2,9 +2,9 @@ package cc.ewell.common.data.net.retrofit.service;
 
 import java.util.Map;
 
-import cc.ewell.common.data.net.retrofit.ResponseBaseBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.Response;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -37,7 +37,7 @@ public interface RxBaseService {
 
     //普通get请求
     @GET
-    Observable<ResponseBaseBody> executeGet(
+    Observable<Response<Object>> executeGet(
             @Url String url,
             @QueryMap Map<String, String> maps);
 
@@ -45,14 +45,14 @@ public interface RxBaseService {
     //普通post请求
     @FormUrlEncoded
     @POST
-    Observable<ResponseBaseBody> executePost(
+    Observable<Response<Object>> executePost(
             @Url String url,
             @FieldMap Map<String, String> maps);
 
     //上传单个文件
     @Multipart
     @POST
-    Observable<ResponseBaseBody> upLoadFile(
+    Observable<Response<Object>> upLoadFile(
             @Url String url,
             @Part("image\\\"; filename=\\\"image.jpg") RequestBody avatar);
 
@@ -60,7 +60,7 @@ public interface RxBaseService {
     //上传多个文件
     @Multipart
     @POST
-    Observable<ResponseBaseBody> uploadFiles(
+    Observable<Response<Object>> uploadFiles(
             @Url String url,
             @PartMap() Map<String, RequestBody> maps);
 

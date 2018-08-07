@@ -3,11 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://E:\Android_Workspace\as_workspace\git\GitLab\backup\Baseframe_Andorid\BaseFrame.iml" filepath="E:\Android_Workspace\as_workspace\git\GitLab\backup\Baseframe_Andorid\BaseFrame.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Baseframe_Andorid.iml" filepath="$PROJECT_DIR$/Baseframe_Andorid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BaseFrame_Android.iml" filepath="$PROJECT_DIR$/BaseFrame_Android.iml" />
+      <module fileurl="file://E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\Baseframe_Andorid.iml" filepath="E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\Baseframe_Andorid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://E:\Android_Workspace\as_workspace\git\GitLab\backup\Baseframe_Andorid\app\app.iml" filepath="E:\Android_Workspace\as_workspace\git\GitLab\backup\Baseframe_Andorid\app\app.iml" />
+      <module fileurl="file://E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\app\app.iml" filepath="E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\common\common.iml" filepath="E:\Android_Workspace\as_workspace\git\github\BaseFrame_Android\common\common.iml" />
       <module fileurl="file://E:\Android_Workspace\as_workspace\git\GitLab\backup\Baseframe_Andorid\common\common.iml" filepath="E:\Android_Workspace\as_workspace\git\GitLab\backup\Baseframe_Andorid\common\common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/componentbridgebase/componentbridgebase.iml" filepath="$PROJECT_DIR$/componentbridgebase/componentbridgebase.iml" />
     </modules>
   </component>
 </project>
