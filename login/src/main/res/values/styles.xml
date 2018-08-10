@@ -1,0 +1,24 @@
+<resources>
+
+    <!--Base Theme-->
+    <style name="login_AppTheme.Base" parent="Theme.AppCompat.Light">
+        <!--no actionbar and title-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Normal application theme. -->
+    <style name="login_AppTheme.App" parent="AppTheme.Base">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:listDivider">@drawable/login_divider</item>
+    </style>
+
+    <style name="login_AppTheme.Fullscreen" parent="Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+</resources>

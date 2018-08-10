@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cc.ewell.baseframe">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name="cc.ewell.baseframe.EApplication"
         android:allowBackup="true"
@@ -14,26 +17,8 @@
 
 
         <!-- 下面是APP中自己写的Activity -->
-        <!-- ************************* Fan Start **************************** -->
-        <activity
-            android:name="cc.ewell.baseframe.ui.login.LoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Fullscreen"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-
 
         <!-- ************************* Super Fan Start **************************** -->
-        <activity
-            android:name="cc.ewell.baseframe.ui.splash.SplashActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Fullscreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <!-- ************************* DC Start **************************** -->
 
 
     </application>

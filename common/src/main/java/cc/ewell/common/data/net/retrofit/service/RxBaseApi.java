@@ -30,6 +30,7 @@ import cc.ewell.common.utils.LogUtil;
 import cc.ewell.common.utils.UUIDUtil;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.Response;
 import rx.Observable;
 import rx.Subscription;
 import rx.functions.Func1;
@@ -63,26 +64,37 @@ public class RxBaseApi {
     }
 
     private static String lastPrefixUrl = "";
+    private static Map<String,String> lastHeaders = null;
 
     public static RxBaseApi getDefault(@NonNull Context context, @NonNull String prefixUrl, Map<String, String> headers) {
 
-        if (!lastPrefixUrl.equals(prefixUrl) || rxBaseApi == null) {
+        //初始话header
+        if (headers == null) {
+            headers = new HashMap<>();
+        }
+        //配置公共header部分
+        String UUID = CommonAccountUtil.getUserId(context);
+        String SSID = UUIDUtil.generateShortUuid();
+        String SEQ = UUIDUtil.getUUID();
+        headers.put(CommonServerConstant.AUTH, "2");
+        headers.put(CommonServerConstant.UUID, UUID);
+        headers.put(CommonServerConstant.SSID, SSID);
+        headers.put(CommonServerConstant.SEQ, SEQ);
+        String SIGN = EncryptionUtil.getMD5("UUIDSSIDSEQKEY" + UUID + SSID + SEQ + CommonServerConstant.KEY);
+        headers.put(CommonServerConstant.SIGN, SIGN);
+
+        //判断是否需要重新实例化
+        if (rxBaseApi == null) {//实例为空
             lastPrefixUrl = prefixUrl;
-
-            if (headers == null) {
-                headers = new HashMap<>();
-            }
-
-            String UUID = CommonAccountUtil.getUserId(context);
-            String SSID = UUIDUtil.generateShortUuid();
-            String SEQ = UUIDUtil.getUUID();
-            headers.put(CommonServerConstant.AUTH, "2");
-            headers.put(CommonServerConstant.UUID, UUID);
-            headers.put(CommonServerConstant.SSID, SSID);
-            headers.put(CommonServerConstant.SEQ, SEQ);
-            String SIGN = EncryptionUtil.getMD5("UUIDSSIDSEQKEY" + UUID + SSID + SEQ + CommonServerConstant.KEY);
-            headers.put(CommonServerConstant.SIGN, SIGN);
-
+            lastHeaders = headers;
+            rxBaseApi = new RxBaseApi(context, prefixUrl, headers);
+        } else if (lastPrefixUrl == null || !lastPrefixUrl.equals(prefixUrl)) {//baseUrl不一样
+            lastPrefixUrl = prefixUrl;
+            lastHeaders = headers;
+            rxBaseApi = new RxBaseApi(context, prefixUrl, headers);
+        } else if (!headers.equals(lastHeaders)) {//header有变化
+            lastPrefixUrl = prefixUrl;
+            lastHeaders = headers;
             rxBaseApi = new RxBaseApi(context, prefixUrl, headers);
         }
         return rxBaseApi;
@@ -105,12 +117,25 @@ public class RxBaseApi {
     public <T> Observable<T> createGetObservable(final Context context, final HttpResultSubscriber subscriber, final Class<T> resultType, String url, Map<String, String> request) {
         subscriber.setContext(context);
         return apiService.executeGet(url, request)
-                .map(new Func1<ResponseBaseBody, T>() {
+                .map(new Func1<Response<Object>, T>() {
                     @Override
-                    public T call(ResponseBaseBody responseBaseBody) {
+                    public T call(Response<Object> response) {
                         T resultData = null;
-                        //返回的服务器对象
-                        if (responseBaseBody != null) {
+
+                        if (response != null) {
+
+                            //获取body
+                            ResponseBaseBody responseBaseBody = null;
+                            try {
+                                responseBaseBody = new Gson().fromJson(response.body().toString(),ResponseBaseBody.class);
+                            }catch (Exception e){
+
+                            }
+                            if (responseBaseBody == null) {
+                                return resultData;
+                            }
+
+                            //设置返回参数
                             if (subscriber != null) {
                                 // 设置上下文
                                 subscriber.setContext(context);
@@ -135,9 +160,6 @@ public class RxBaseApi {
                         return resultData;
                     }
                 })
-//                .subscribeOn(Schedulers.io())
-//                .unsubscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
                 .compose(TransformUtils.<T>defaultSchedulers())
                 .retryWhen(new RetryWhenNetworkException());
     }
@@ -182,13 +204,26 @@ public class RxBaseApi {
         subscriber.setContext(context);
         return apiService.executePost(url, request)
                 .observeOn(Schedulers.io())
-                .map(new Func1<ResponseBaseBody, T>() {
+                .map(new Func1<Response<Object>, T>() {
                     @Override
-                    public T call(ResponseBaseBody responseBaseBody) {
+                    public T call(Response<Object> response) {
 
                         T resultData = null;
                         //返回的服务器对象
-                        if (responseBaseBody != null) {
+                        if (response != null) {
+
+                            //获取body
+                            ResponseBaseBody responseBaseBody = null;
+                            try {
+                                responseBaseBody = new Gson().fromJson(response.body().toString(),ResponseBaseBody.class);
+                            }catch (Exception e){
+
+                            }
+                            if (responseBaseBody == null) {
+                                return resultData;
+                            }
+
+                            //设置返回参数
                             if (subscriber != null) {
                                 // 设置上下文
                                 subscriber.setContext(context);
@@ -206,7 +241,6 @@ public class RxBaseApi {
                                     resultData = new Gson().fromJson(responseBaseBody.getMsg(), resultType);
                                     if (resultData != null) {
                                         LogUtil.i(resultData.toString());
-                                        Log.i("11111", resultData.toString());
                                     }
                                 } catch (Exception t) {
                                     Logger.i(resultType.getName() + "解析出错 msg= " + responseBaseBody.getMsg());
@@ -217,16 +251,6 @@ public class RxBaseApi {
                         return resultData;
                     }
                 })
-//                .doOnSubscribe(new Action0() {
-//                    @Override
-//                    public void call() {
-//                    }
-//                })
-//                .subscribeOn(AndroidSchedulers.mainThread()) // 指定主线程
-
-//                .subscribeOn(Schedulers.io())
-//                .unsubscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
                 .compose(TransformUtils.<T>defaultSchedulers());
     }
 
@@ -270,13 +294,26 @@ public class RxBaseApi {
         subscriber.setContext(context);
         return apiService.executePost(url, request)
                 .observeOn(Schedulers.io())
-                .map(new Func1<ResponseBaseBody, T>() {
+                .map(new Func1<Response<Object>, T>() {
                     @Override
-                    public T call(ResponseBaseBody responseBaseBody) {
+                    public T call(Response<Object> response) {
 
                         T resultData = null;
                         //返回的服务器对象
-                        if (responseBaseBody != null) {
+                        if (response != null) {
+
+                            //获取body
+                            ResponseBaseBody responseBaseBody = null;
+                            try {
+                                responseBaseBody = new Gson().fromJson(response.body().toString(),ResponseBaseBody.class);
+                            }catch (Exception e){
+
+                            }
+                            if (responseBaseBody == null) {
+                                return resultData;
+                            }
+
+                            //设置返回参数
                             if (subscriber != null) {
                                 // 设置上下文
                                 subscriber.setContext(context);
@@ -304,16 +341,6 @@ public class RxBaseApi {
                         return resultData;
                     }
                 })
-//                .doOnSubscribe(new Action0() {
-//                    @Override
-//                    public void call() {
-//                    }
-//                })
-//                .subscribeOn(AndroidSchedulers.mainThread()) // 指定主线程
-
-//                .subscribeOn(Schedulers.io())
-//                .unsubscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
                 .compose(TransformUtils.<T>defaultSchedulers());
     }
 
@@ -332,13 +359,26 @@ public class RxBaseApi {
         subscriber.setContext(context);
         return apiService.uploadFiles(url, maps)
                 .observeOn(Schedulers.io())
-                .map(new Func1<ResponseBaseBody, T>() {
+                .map(new Func1<Response<Object>, T>() {
                     @Override
-                    public T call(ResponseBaseBody responseBaseBody) {
+                    public T call(Response<Object> response) {
 
                         T resultData = null;
                         //返回的服务器对象
-                        if (responseBaseBody != null) {
+                        if (response != null) {
+
+                            //获取body
+                            ResponseBaseBody responseBaseBody = null;
+                            try {
+                                responseBaseBody = new Gson().fromJson(response.body().toString(),ResponseBaseBody.class);
+                            }catch (Exception e){
+
+                            }
+                            if (responseBaseBody == null) {
+                                return resultData;
+                            }
+
+                            //设置返回参数
                             if (subscriber != null) {
                                 // 设置上下文
                                 subscriber.setContext(context);

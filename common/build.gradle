@@ -1,17 +1,22 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion COMPILE_SDK_VERSION.toInteger()
+    buildToolsVersion SUPPORT_VERSION
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion MIN_SDK_VERSION.toInteger()
+        targetSdkVersion TARGET_SDT_VERSION.toInteger()
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true//annotationProcessor   注解需要  dagger
+                arguments = [ moduleName : project.getName() ]//arouter每个module需要
+            }
+        }
 
     }
     buildTypes {
@@ -28,48 +33,68 @@ android {
             jniLibs.srcDirs = ['libs', 'libs-sdk']
         }
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
 
+    //组件桥接
+    api project(':componentbridgebase')
+
     // common
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:support-v13:25.3.1'
+    api 'com.android.support:appcompat-v7:25.3.1'
+    api 'com.android.support:design:25.3.1'
+    api 'com.android.support:support-v13:25.3.1'
 
     // Logger
-    compile 'com.orhanobut:logger:1.15'
+    api 'com.orhanobut:logger:1.15'
 
     // gson
-    compile 'com.google.code.gson:gson:2.2.4'
+    api 'com.google.code.gson:gson:2.2.4'
 
     // EventBus
-    compile 'org.greenrobot:eventbus:3.0.0'
+    api 'org.greenrobot:eventbus:3.0.0'
     //annotation
-    compile 'com.android.support:support-annotations:25.3.1'
+    api 'com.android.support:support-annotations:25.3.1'
     //recycle view
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    api 'com.android.support:recyclerview-v7:25.3.1'
     //RecycleView 的封装库
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28'
 
     //Retrofit + Rxjava + okhttp
-    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    api 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     // Retrofit网络处理
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
+    api 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
     // Retrofit的rx解析库
-    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    api 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     // Retrofit的gson库
-    compile 'io.reactivex:rxandroid:1.1.0'
+    api 'io.reactivex:rxandroid:1.1.0'
     // RxAndroid
-    compile 'io.reactivex:rxjava:1.1.0'
+    api 'io.reactivex:rxjava:1.1.0'
     // 推荐同时加载RxJava
-    compile 'com.squareup.okhttp3:okhttp:3.3.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
-    compile 'com.artemzin.rxjava:proguard-rules:1.1.3.0'
+    api 'com.squareup.okhttp3:okhttp:3.3.1'
+    api 'com.squareup.okhttp3:logging-interceptor:3.1.2'
+    api 'com.artemzin.rxjava:proguard-rules:1.1.3.0'
 
+    // Dagger
+    //必须配置，dagger缺少 javax.annotation包
+    implementation 'com.android.support:multidex:1.0.0'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.7'
+    implementation 'com.google.dagger:dagger:2.7'
+    provided 'javax.annotation:jsr250-api:1.0'
+    provided 'javax.annotation:javax.annotation-api:1.3'
+    //必须配置，dagger缺少 javax.annotation包
+    provided 'org.projectlombok:lombok:1.16.2'
+    implementation 'com.android.support:multidex:1.0.0'
+    implementation 'com.google.dagger:dagger:2.7'
+
+    //arouter
+    api 'com.alibaba:arouter-api:1.3.1'
+    // arouter-compiler 的注解依赖需要所有使用 ARouter 的 model 都添加依赖
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 }

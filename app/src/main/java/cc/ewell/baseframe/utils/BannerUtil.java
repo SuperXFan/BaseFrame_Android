@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import cc.ewell.baseframe.constants.Constant;
+import cc.ewell.common.constants.CommonConstant;
 
 /**
  * 轮播图相关的方法
@@ -36,7 +36,7 @@ public class BannerUtil {
 	 * @return
 	 */
 	public static int getBannerVersion(Context context){
-		SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+		SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
 		return sp.getInt(BANNER_VERSION_CODE, 0);
 	}
 	
@@ -46,7 +46,7 @@ public class BannerUtil {
 	 * @param version
 	 */
 	public static void setBannerVersion(Context context, int version){
-		SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+		SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
 		Editor edit = sp.edit();
 		edit.putInt(BANNER_VERSION_CODE, version);
 		edit.apply();
@@ -123,7 +123,7 @@ public class BannerUtil {
 	 * @return
 	 */
 	public static long getLastUpdateTime(Context context){
-		SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+		SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
 		return sp.getLong(LAST_UPDATE_TIME, 0);
 		
 	}
@@ -134,7 +134,7 @@ public class BannerUtil {
 	 * @return
 	 */
 	public static void setLastUpdateTime(Context context, long lastTime){
-		SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+		SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
 		Editor edit = sp.edit();
 		edit.putLong(LAST_UPDATE_TIME, lastTime);
 		edit.apply();

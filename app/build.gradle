@@ -1,21 +1,28 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt' // 注释处理
+//apply plugin: 'com.neenbedankt.android-apt' // 注释处理
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion COMPILE_SDK_VERSION.toInteger()
+    buildToolsVersion SUPPORT_VERSION
     defaultConfig {
         applicationId "cc.ewell.baseframe"
-        minSdkVersion 15
-        targetSdkVersion 22
-        versionCode Integer.parseInt(project.VERSION_CODE)
-        versionName project.VERSION_NAME
+        minSdkVersion MIN_SDK_VERSION.toInteger()
+        targetSdkVersion TARGET_SDT_VERSION.toInteger()
+        versionCode VERSION_CODE.toInteger()
+        versionName VERSION_NAME
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
 
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86_64"
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true//annotationProcessor   注解需要 dagger
+                arguments = [ moduleName : project.getName() ]//arouter每个module需要
+            }
         }
     }
 
@@ -44,30 +51,35 @@ android {
     dexOptions {
         javaMaxHeapSize "1g"
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
 
-    compile project(':common')
+    implementation project(':common')
+    implementation project(':login')
 
     // Dagger
     //必须配置，dagger缺少 javax.annotation包
-    compile 'com.android.support:multidex:1.0.0'
-    compile 'com.google.dagger:dagger:2.7'
-//    compile 'com.android.support:appcompat-v7:23.4.0'
-    testCompile 'junit:junit:4.12'
-    apt 'com.google.dagger:dagger-compiler:2.7'
+    implementation 'com.android.support:multidex:1.0.0'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.7'
+    implementation 'com.google.dagger:dagger:2.7'
     provided 'javax.annotation:jsr250-api:1.0'
     provided 'javax.annotation:javax.annotation-api:1.3'
     //必须配置，dagger缺少 javax.annotation包
     provided 'org.projectlombok:lombok:1.16.2'
-    compile 'com.android.support:multidex:1.0.0'
-    compile 'com.google.dagger:dagger:2.7'
+    implementation 'com.android.support:multidex:1.0.0'
+    implementation 'com.google.dagger:dagger:2.7'
 
-    compile 'com.jakewharton:butterknife:7.0.1'
+    //butterknife
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    //arouter每个module需要
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="common_header_background">#ffffff</color>
+    <color name="common_header_textcolor">#333333</color>
+
+    <color name="common_background_color">#f4f4f4</color>
+
+    <!--分割线-->
+    <color name="common_divider_color_dfdfdf">#dfdfdf</color>
+
+    <!--通用部分-->
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+</resources>
