@@ -1,4 +1,4 @@
-package cc.ewell.baseframe.business.splash;
+package cc.ewell.login.business.splash;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 
 import javax.inject.Inject;
 
-import cc.ewell.baseframe.utils.AccountUtil;
+import cc.ewell.login.utils.AccountUtil;
 
 /**
  * Created by SuperFan on 2017/4/13.

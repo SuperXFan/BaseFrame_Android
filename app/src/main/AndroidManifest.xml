@@ -19,16 +19,6 @@
         <!-- 下面是APP中自己写的Activity -->
 
         <!-- ************************* Super Fan Start **************************** -->
-        <activity
-            android:name="cc.ewell.baseframe.business.splash.SplashActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Fullscreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
 
     </application>

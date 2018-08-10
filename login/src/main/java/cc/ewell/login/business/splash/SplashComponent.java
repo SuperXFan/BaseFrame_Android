@@ -1,7 +1,7 @@
-package cc.ewell.baseframe.business.splash;
+package cc.ewell.login.business.splash;
 
-import cc.ewell.baseframe.injector.PerActivity;
 import cc.ewell.common.ApplicationComponent;
+import cc.ewell.login.injector.PerActivity;
 import dagger.Component;
 
 /**

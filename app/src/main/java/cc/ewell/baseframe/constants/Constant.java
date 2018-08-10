@@ -7,6 +7,4 @@ package cc.ewell.baseframe.constants;
  */
 public class Constant {
 
-    // SharedPreference 文件名
-    public static final String SHARED_PREFERENCE_NAME = "baseframe_share_preference_path";
 }
