@@ -7,6 +7,4 @@ package cc.ewell.login.constants;
  */
 public class Constant {
 
-    // SharedPreference 文件名
-    public static final String LOGIN_SHARED_PREFERENCE_NAME = "login_share_preference_path";
 }

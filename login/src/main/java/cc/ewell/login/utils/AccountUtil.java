@@ -1,4 +1,4 @@
-package cc.ewell.baseframe.utils;
+package cc.ewell.login.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,7 +6,7 @@ import android.text.TextUtils;
 
 import java.util.Set;
 
-import cc.ewell.baseframe.constants.Constant;
+import cc.ewell.common.constants.CommonConstant;
 
 /**
  * 用户信息工具类
@@ -87,7 +87,7 @@ public class AccountUtil {
      * 将开启指纹的账户存在SharedPreference中
      */
     public static void setFingerprintAccount(Context context, String fingerprintAccount) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(FINGERPRINT_ACCOUNT, fingerprintAccount).apply();
     }
 
@@ -98,7 +98,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getFingerprintAccount(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(FINGERPRINT_ACCOUNT, "");
     }
 
@@ -106,7 +106,7 @@ public class AccountUtil {
      * 将医院code存在SharedPreference中
      */
     public static void setHospitalCode(Context context, String hospitalCode) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(HOSPITAL_CODE, hospitalCode).apply();
     }
 
@@ -117,7 +117,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getHospitalCode(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(HOSPITAL_CODE, "");
     }
 
@@ -125,7 +125,7 @@ public class AccountUtil {
      * 将用户code存在SharedPreference中
      */
     public static void setUserCode(Context context, String userCode) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(USER_CODE, userCode).apply();
     }
 
@@ -136,7 +136,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getUserCode(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(USER_CODE, "");
     }
 
@@ -144,7 +144,7 @@ public class AccountUtil {
      * 将用户工号存在SharedPreference中
      */
     public static void setUserWorkerNum(Context context, String workerNum) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(WORKER_NUMBER, workerNum).apply();
     }
 
@@ -155,7 +155,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getUserWorkerNum(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(WORKER_NUMBER, "");
     }
 
@@ -163,7 +163,7 @@ public class AccountUtil {
      * 将用户类型存在SharedPreference中
      */
     public static void setUserType(Context context, String userType) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(USER_TYPE, userType).apply();
     }
 
@@ -174,7 +174,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getUserType(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(USER_TYPE, "");
     }
 
@@ -182,7 +182,7 @@ public class AccountUtil {
      * 将用户加密密码存在SharedPreference中
      */
     public static void setUserPassward(Context context, String userPassward) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(USER_PASS, userPassward).apply();
     }
 
@@ -193,7 +193,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getUserPassward(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(USER_PASS, "");
     }
 
@@ -201,7 +201,7 @@ public class AccountUtil {
      * 将用户昵称存在SharedPreference中
      */
     public static void setUserNickName(Context context, String userNickName) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(NICK_NAME, userNickName).apply();
     }
 
@@ -212,7 +212,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getUserNickName(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(NICK_NAME, "");
     }
 
@@ -220,7 +220,7 @@ public class AccountUtil {
      * 将用户状态存在SharedPreference中
      */
     public static void setUserState(Context context, String userState) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(USER_STATE, userState).apply();
     }
 
@@ -231,7 +231,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getUserState(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(USER_STATE, "");
     }
 
@@ -239,7 +239,7 @@ public class AccountUtil {
      * 将用户创建时间存在SharedPreference中
      */
     public static void setCreateTime(Context context, String createTime) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(CREATE_TIME, createTime).apply();
     }
 
@@ -250,7 +250,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getCreateTime(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(CREATE_TIME, "");
     }
 
@@ -258,7 +258,7 @@ public class AccountUtil {
      * 将用户最后登录时间存在SharedPreference中
      */
     public static void setLastLoginTime(Context context, String lastLoginTime) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(LAST_LOGIN_TIME, lastLoginTime).apply();
     }
 
@@ -269,7 +269,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getLastLoginTime(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(LAST_LOGIN_TIME, "");
     }
 
@@ -280,7 +280,7 @@ public class AccountUtil {
      * @return
      */
     public static String getPhone(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(PHONE, "");
     }
 
@@ -291,7 +291,7 @@ public class AccountUtil {
      * @param phone
      */
     public static void setPhone(Context context, String phone) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(PHONE, phone).apply();
     }
 
@@ -303,7 +303,7 @@ public class AccountUtil {
      * @return
      */
     public static String getSex(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(SEX, "");
     }
 
@@ -314,7 +314,7 @@ public class AccountUtil {
      * @param sex
      */
     public static void setSex(Context context, String sex) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(SEX, sex).apply();
     }
 
@@ -325,7 +325,7 @@ public class AccountUtil {
      * @return
      */
     public static String getUserAvr(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(USERAVR, "");
     }
 
@@ -336,7 +336,7 @@ public class AccountUtil {
      * @param userAvr
      */
     public static void setUserAvr(Context context, String userAvr) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(USERAVR, userAvr).apply();
     }
 
@@ -347,7 +347,7 @@ public class AccountUtil {
      * @return
      */
     public static String getName(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(NAME, "");
     }
 
@@ -358,7 +358,7 @@ public class AccountUtil {
      * @param name
      */
     public static void setName(Context context, String name) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(NAME, name).apply();
     }
 
@@ -370,7 +370,7 @@ public class AccountUtil {
      * @return
      */
     public static String getHospitalName(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(HOSPITAL_NAME, "");
     }
 
@@ -381,7 +381,7 @@ public class AccountUtil {
      * @param name
      */
     public static void setHospitalName(Context context, String name) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(HOSPITAL_NAME, name).apply();
     }
 
@@ -389,7 +389,7 @@ public class AccountUtil {
      * 将用户科室存在SharedPreference中
      */
     public static void setdefaultdeptName(Context context, String defaultdeptName) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(DEFAULTDEPTNAME, defaultdeptName).apply();
     }
 
@@ -400,7 +400,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getdefaultdeptName(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(DEFAULTDEPTNAME, "");
     }
 
@@ -408,7 +408,7 @@ public class AccountUtil {
      * 将用户最后登录时间存在SharedPreference中
      */
     public static void setdefaultdeptCode(Context context, String defaultdeptName) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(DEFAULTDEPTCODE, defaultdeptName).apply();
     }
 
@@ -419,7 +419,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getdefaultdeptCode(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(DEFAULTDEPTCODE, "");
     }
 
@@ -427,7 +427,7 @@ public class AccountUtil {
      * 设置当前是否是专家模式
      */
     public static void setIsExpertMode(Context context, boolean isExpert) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putBoolean(MODE, isExpert).apply();
     }
 
@@ -435,7 +435,7 @@ public class AccountUtil {
      * 当前是否是专家模式, 默认是专家模式
      */
     public static boolean getIsExpertMode(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getBoolean(MODE, true);
     }
 
@@ -453,7 +453,7 @@ public class AccountUtil {
      * 设置mark
      */
     public static void setMark(Context context, String mark) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(MARK, mark).apply();
     }
 
@@ -461,7 +461,7 @@ public class AccountUtil {
      * 获取mark
      */
     public static String getMark(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(MARK, "");
     }
 
@@ -469,7 +469,7 @@ public class AccountUtil {
      * 设置个人简介
      */
     public static void setUserIntroduceview(Context context, String userIntroduce) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(USER_INTRODUCEVIEW, userIntroduce).apply();
     }
 
@@ -477,7 +477,7 @@ public class AccountUtil {
      * 获取个人简介
      */
     public static String getUserIntroduceview(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(USER_INTRODUCEVIEW, "");
     }
 
@@ -485,7 +485,7 @@ public class AccountUtil {
      * 设置个人擅长
      */
     public static void setUserSkill(Context context, String userSkill) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(USER_SKILL, userSkill).apply();
     }
 
@@ -493,7 +493,7 @@ public class AccountUtil {
      * 获取个人擅长
      */
     public static String getUserSkill(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(USER_SKILL, "");
     }
 
@@ -501,7 +501,7 @@ public class AccountUtil {
      * 设置个推cid
      */
     public static void setGetuiCid(Context context, String cid) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(GETUI_CID, cid).apply();
     }
 
@@ -509,7 +509,7 @@ public class AccountUtil {
      * 获取cid
      */
     public static String getGetuiCid(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(GETUI_CID, "");
     }
 
@@ -517,7 +517,7 @@ public class AccountUtil {
      * 设置个推cid
      */
     public static void setIsSetCid(Context context, boolean isSet) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putBoolean(IS_SET_CID, isSet).apply();
     }
 
@@ -525,7 +525,7 @@ public class AccountUtil {
      * 获取是否向服务设置了cid
      */
     public static boolean getIsSetCid(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getBoolean(IS_SET_CID, false);
     }
 
@@ -533,7 +533,7 @@ public class AccountUtil {
      * 将nim accid存在SharedPreference中
      */
     public static void setUserNimAccid(Context context, String nimAccid) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(USER_NIM_ACCID, nimAccid).apply();
     }
 
@@ -544,7 +544,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getUserNimAccid(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(USER_NIM_ACCID, "");
     }
 
@@ -552,7 +552,7 @@ public class AccountUtil {
      * 将accToken存在SharedPreference中
      */
     public static void setUserNimAcctoken(Context context, String nimAcctoken) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(USER_NIM_ACCTOKEN, nimAcctoken).apply();
     }
 
@@ -563,7 +563,7 @@ public class AccountUtil {
      * @return 如果没有, 则返回""
      */
     public static String getUserNimAcctoken(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(USER_NIM_ACCTOKEN, "");
     }
 
@@ -582,7 +582,7 @@ public class AccountUtil {
      * 设置用户权限
      */
     public static void setUserAuthority(Context context, Set<String> authoritys) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putStringSet(USER_AUTHORITY, authoritys).apply();
     }
 
@@ -590,7 +590,7 @@ public class AccountUtil {
      * 获取用户权限
      */
     public static Set<String> getUserAuthority(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getStringSet(USER_AUTHORITY, null);
     }
 
@@ -598,7 +598,7 @@ public class AccountUtil {
      * 设置是否登录成功
      */
     public static void setIsLoginSuccess(Context context, boolean isLoginSuccess){
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putBoolean(IS_LOGIN_SUCCESS, isLoginSuccess).apply();
     }
 
@@ -608,7 +608,7 @@ public class AccountUtil {
      * @return
      */
     public static boolean getIsLoginSuccess(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getBoolean(IS_LOGIN_SUCCESS, false);
     }
 }

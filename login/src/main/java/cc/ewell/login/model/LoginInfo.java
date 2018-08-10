@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by SuperFan on 2016/9/10.
  */
-public class LoginInfo implements Serializable {
+public class LoginInfo {
 
 
     /**

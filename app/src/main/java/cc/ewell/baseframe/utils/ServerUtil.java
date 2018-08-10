@@ -3,7 +3,7 @@ package cc.ewell.baseframe.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import cc.ewell.baseframe.constants.Constant;
+import cc.ewell.common.constants.CommonConstant;
 
 /**
  * Created by SuperFan on 2016/9/13.
@@ -17,7 +17,7 @@ public class ServerUtil {
      * 将服务host存在SharedPreference中
      */
     public static void setServerHost(Context context, String serverHost) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(SERVER_HOST_PREFERENCE_KEY, serverHost).apply();
     }
 
@@ -28,7 +28,7 @@ public class ServerUtil {
      * @return 如果没有, 则返回""
      */
     public static String getServerHost(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(SERVER_HOST_PREFERENCE_KEY, "");
     }
 
@@ -36,7 +36,7 @@ public class ServerUtil {
      * 将图片服务baseUrl存在SharedPreference中
      */
     public static void setPicServerBaseUrl(Context context, String picBaseServerUrl) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(PICTURE_SERVER_BASE_URL_KEY, picBaseServerUrl).apply();
     }
 
@@ -47,7 +47,7 @@ public class ServerUtil {
      * @return 如果没有, 则返回""
      */
     public static String getPicServerBaseUrl(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(CommonConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         return sp.getString(PICTURE_SERVER_BASE_URL_KEY, "");
     }
 }

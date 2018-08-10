@@ -8,6 +8,6 @@ package cc.ewell.baseframe.constants;
 public class DBConstant {
 
 
-    public static final String DATA_BASE_NAME = "cloud_doctor.db";
+    public static final String DATA_BASE_NAME = "baseframe.db";
 
 }

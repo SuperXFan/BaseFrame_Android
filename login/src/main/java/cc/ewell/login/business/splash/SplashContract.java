@@ -1,4 +1,4 @@
-package cc.ewell.baseframe.business.splash;
+package cc.ewell.login.business.splash;
 
 import cc.ewell.common.base.BasePresenter;
 import cc.ewell.common.base.BaseView;

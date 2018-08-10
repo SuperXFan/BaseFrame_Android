@@ -1,7 +1,6 @@
-package cc.ewell.baseframe.business.splash;
+package cc.ewell.login.business.splash;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,21 +16,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import cc.ewell.baseframe.R;
-import cc.ewell.baseframe.utils.AccountUtil;
 import cc.ewell.common.base.BaseActivity;
 import cc.ewell.common.utils.ToastUtil;
+import cc.ewell.login.R;
+import cc.ewell.login.R2;
 
 /**
  * Created by SuperFan on 2017/4/13.
  */
 public class SplashActivity extends BaseActivity implements SplashContract.View {
 
-    @BindView(R.id.splash_logo_view)
+    @BindView(R2.id.splash_logo_view)
     ImageView splashLogoView;
-    @BindView(R.id.company_english_name_view)
+    @BindView(R2.id.company_english_name_view)
     TextView companyEnglishNameView;
-    @BindView(R.id.company_chinese_name_view)
+    @BindView(R2.id.company_chinese_name_view)
     TextView companyChineseNameView;
     private Unbinder unbinder;
 
@@ -44,7 +43,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
 
     @Override
     protected int initContentView() {
-        return R.layout.activity_splash;
+        return R.layout.login_activity_splash;
     }
 
     @Override
@@ -148,16 +147,15 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
         }
     }
 
-    @OnClick({R.id.splash_logo_view, R.id.company_english_name_view, R.id.company_chinese_name_view})
+    @OnClick({R2.id.splash_logo_view, R2.id.company_english_name_view, R2.id.company_chinese_name_view})
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.splash_logo_view:
-                showToast("gaga");
-                break;
-            case R.id.company_english_name_view:
-            case R.id.company_chinese_name_view:
-                jumpTo(false);
-                break;
+        int i = view.getId();
+        if (i == R.id.splash_logo_view) {
+            showToast("gaga");
+
+        } else if (i == R.id.company_english_name_view || i == R.id.company_chinese_name_view) {
+            jumpTo(false);
+
         }
     }
 }
