@@ -8,4 +8,8 @@ package cc.ewell.common.constants;
 public class CommonConstant {
     // SharedPreference 文件名
     public static final String SHARED_PREFERENCE_NAME = "baseframe_share_preference_path";
+
+    public static final int UI_STANDARD_WIDTH = 360;
+    public static final int UI_STANDARD_HEIGHT = 720;
+
 }

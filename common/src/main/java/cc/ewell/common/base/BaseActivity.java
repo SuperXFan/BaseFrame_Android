@@ -20,6 +20,8 @@ import android.widget.ViewAnimator;
 
 import cc.ewell.common.ApplicationComponent;
 import cc.ewell.common.BaseApp;
+import cc.ewell.common.constants.CommonConstant;
+import cc.ewell.common.utils.ScreenUtils;
 
 /**
  * Created by fan on 2016/8/9.
@@ -36,6 +38,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         initTheme();
 
         super.onCreate(savedInstanceState);
+
+        //屏幕适配 以CommonConstant.UI_STANDARD_WIDTH 或者 CommonConstant.UI_STANDARD_HEIGHT来修改density
+        if (ScreenUtils.isPortrait()) {
+            ScreenUtils.adaptScreen4VerticalSlide(this, CommonConstant.UI_STANDARD_WIDTH);
+        } else {
+            ScreenUtils.adaptScreen4HorizontalSlide(this, CommonConstant.UI_STANDARD_HEIGHT);
+        }
 
         setContentView(initContentView());
 
