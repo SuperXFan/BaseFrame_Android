@@ -1,5 +1,6 @@
 package cc.ewell.login.business.splash;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.ViewAnimator;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -17,7 +20,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import cc.ewell.common.base.BaseActivity;
+import cc.ewell.common.utils.SpanUtils;
 import cc.ewell.common.utils.ToastUtil;
+import cc.ewell.common.utils.permission.DialogHelper;
+import cc.ewell.common.utils.permission.PermissionConstants;
+import cc.ewell.common.utils.permission.PermissionUtils;
 import cc.ewell.login.R;
 import cc.ewell.login.R2;
 
@@ -28,10 +35,10 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
 
     @BindView(R2.id.splash_logo_view)
     ImageView splashLogoView;
-    @BindView(R2.id.company_english_name_view)
-    TextView companyEnglishNameView;
-    @BindView(R2.id.company_chinese_name_view)
-    TextView companyChineseNameView;
+    @BindView(R2.id.gologin)
+    TextView gologin;
+    @BindView(R2.id.permission)
+    TextView permission;
     private Unbinder unbinder;
 
     //Presenter
@@ -147,15 +154,60 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
         }
     }
 
-    @OnClick({R2.id.splash_logo_view, R2.id.company_english_name_view, R2.id.company_chinese_name_view})
+    @OnClick({R2.id.splash_logo_view, R2.id.gologin, R2.id.permission})
     public void onClick(View view) {
         int i = view.getId();
         if (i == R.id.splash_logo_view) {
             showToast("gaga");
 
-        } else if (i == R.id.company_english_name_view || i == R.id.company_chinese_name_view) {
+        } else if (i == R.id.gologin) {
             jumpTo(false);
-
+        } else if(i == R.id.permission){
+            requestPermission();
         }
+    }
+
+    private void requestPermission(){
+        PermissionUtils.permission(PermissionConstants.CALENDAR)
+                .rationale(new PermissionUtils.OnRationaleListener() {//如果用户自己关闭了权限
+                    @Override
+                    public void rationale(final ShouldRequest shouldRequest) {
+                        DialogHelper.showRationaleDialog(shouldRequest);//提示去开启
+                    }
+                })
+                .callback(new PermissionUtils.FullCallback() {//获取权限后的回调
+                    @Override
+                    public void onGranted(List<String> permissionsGranted) {//成功获取
+                        updateAboutPermission();
+                    }
+
+                    @Override
+                    public void onDenied(List<String> permissionsDeniedForever,
+                                         List<String> permissionsDenied) {//拒绝权限
+                        if (!permissionsDeniedForever.isEmpty()) {
+                            DialogHelper.showOpenAppSettingDialog();//提示去开启
+                        }
+                    }
+                })
+//                .theme(new PermissionUtils.ThemeCallback() {
+//                    @Override
+//                    public void onActivityCreate(Activity activity) {
+//                        ScreenUtils.setFullScreen(activity);
+//                    }
+//                })
+                .request();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateAboutPermission();
+    }
+    private void updateAboutPermission() {
+        permission.setText(new SpanUtils()
+                .append("点击动态获取权限：").setBold()
+                .appendLine("READ_CALENDAR: " + PermissionUtils.isGranted(Manifest.permission.READ_CALENDAR))
+                .create());
     }
 }
