@@ -3,6 +3,7 @@ package cc.ewell.common;
 import android.app.Application;
 
 import cc.ewell.common.utils.BaseUtil;
+import cc.ewell.common.utils.LogUtil;
 
 public abstract class BaseApp extends Application {
 
@@ -12,6 +13,7 @@ public abstract class BaseApp extends Application {
     public void onCreate() {
         super.onCreate();
         BaseUtil.init(this);//初始话BaseUtil 会有app实例和相关生命周期的使用
+        LogUtil.init();//初始化Log
         initInjector();
     }
 

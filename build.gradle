@@ -10,7 +10,7 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        //classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'//远程apt工具地址
+        //classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'//远程apt工具地址 已被google自带的annotationProcessor替代
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'//Butter Knife in a library
     }
 }
@@ -19,7 +19,7 @@ allprojects {
     repositories {
         jcenter()
 
-        maven { url "https://jitpack.io" }//RecycleView 的封装库
+        maven { url "https://jitpack.io" }//RecycleView 等的封装库
         mavenCentral()
         google()
     }
