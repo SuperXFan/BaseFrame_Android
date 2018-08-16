@@ -1,4 +1,4 @@
-package cc.ewell.common.utils.app;
+package cc.ewell.common.utils;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

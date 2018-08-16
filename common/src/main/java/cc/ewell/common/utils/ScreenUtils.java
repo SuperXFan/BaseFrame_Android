@@ -1,8 +1,6 @@
 package cc.ewell.common.utils;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Application;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -20,10 +18,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import java.lang.reflect.InvocationTargetException;
-
-import cc.ewell.common.BaseApp;
-
 import static android.Manifest.permission.WRITE_SETTINGS;
 
 /**
@@ -32,6 +26,29 @@ import static android.Manifest.permission.WRITE_SETTINGS;
  *     blog  : http://blankj.com
  *     time  : 2016/08/02
  *     desc  : utils about screen
+ *
+ getScreenWidth             : 获取屏幕的宽度（单位：px）
+ getScreenHeight            : 获取屏幕的高度（单位：px）
+ getScreenDensity           : 获取屏幕密度
+ getScreenDensityDpi        : 获取屏幕密度 DPI
+ setFullScreen              : 设置屏幕为全屏
+ setNonFullScreen           : 设置屏幕为非全屏
+ toggleFullScreen           : 切换屏幕为全屏与否状态
+ isFullScreen               : 判断屏幕是否为全屏
+ setLandscape               : 设置屏幕为横屏
+ setPortrait                : 设置屏幕为竖屏
+ isLandscape                : 判断是否横屏
+ isPortrait                 : 判断是否竖屏
+ getScreenRotation          : 获取屏幕旋转角度
+ screenShot                 : 截屏
+ isScreenLock               : 判断是否锁屏
+ setSleepDuration           : 设置进入休眠时长
+ getSleepDuration           : 获取进入休眠时长
+ isTablet                   : 判断是否是平板
+ adaptScreen4VerticalSlide  : 适配垂直滑动的屏幕
+ adaptScreen4HorizontalSlide: 适配水平滑动的屏幕
+ cancelAdaptScreen          : 取消适配屏幕
+ isAdaptScreen              : 是否适配屏幕
  * </pre>
  */
 public final class ScreenUtils {
@@ -46,9 +63,9 @@ public final class ScreenUtils {
      * @return the width of screen, in pixel
      */
     public static int getScreenWidth() {
-        WindowManager wm = (WindowManager) getApp().getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) BaseUtil.getApplication().getSystemService(Context.WINDOW_SERVICE);
         if (wm == null) {
-            return getApp().getResources().getDisplayMetrics().widthPixels;
+            return BaseUtil.getApplication().getResources().getDisplayMetrics().widthPixels;
         }
         Point point = new Point();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -65,9 +82,9 @@ public final class ScreenUtils {
      * @return the height of screen, in pixel
      */
     public static int getScreenHeight() {
-        WindowManager wm = (WindowManager) getApp().getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) BaseUtil.getApplication().getSystemService(Context.WINDOW_SERVICE);
         if (wm == null) {
-            return getApp().getResources().getDisplayMetrics().heightPixels;
+            return BaseUtil.getApplication().getResources().getDisplayMetrics().heightPixels;
         }
         Point point = new Point();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -84,7 +101,7 @@ public final class ScreenUtils {
      * @return the density of screen
      */
     public static float getScreenDensity() {
-        return getApp().getResources().getDisplayMetrics().density;
+        return BaseUtil.getApplication().getResources().getDisplayMetrics().density;
     }
 
     /**
@@ -93,7 +110,7 @@ public final class ScreenUtils {
      * @return the screen density expressed as dots-per-inch
      */
     public static int getScreenDensityDpi() {
-        return getApp().getResources().getDisplayMetrics().densityDpi;
+        return BaseUtil.getApplication().getResources().getDisplayMetrics().densityDpi;
     }
 
     /**
@@ -168,7 +185,7 @@ public final class ScreenUtils {
      * @return {@code true}: yes<br>{@code false}: no
      */
     public static boolean isLandscape() {
-        return getApp().getResources().getConfiguration().orientation
+        return BaseUtil.getApplication().getResources().getConfiguration().orientation
                 == Configuration.ORIENTATION_LANDSCAPE;
     }
 
@@ -178,7 +195,7 @@ public final class ScreenUtils {
      * @return {@code true}: yes<br>{@code false}: no
      */
     public static boolean isPortrait() {
-        return getApp().getResources().getConfiguration().orientation
+        return BaseUtil.getApplication().getResources().getConfiguration().orientation
                 == Configuration.ORIENTATION_PORTRAIT;
     }
 
@@ -254,7 +271,7 @@ public final class ScreenUtils {
      */
     public static boolean isScreenLock() {
         KeyguardManager km =
-                (KeyguardManager) getApp().getSystemService(Context.KEYGUARD_SERVICE);
+                (KeyguardManager) BaseUtil.getApplication().getSystemService(Context.KEYGUARD_SERVICE);
         return km != null && km.inKeyguardRestrictedInputMode();
     }
 
@@ -267,7 +284,7 @@ public final class ScreenUtils {
     @RequiresPermission(WRITE_SETTINGS)
     public static void setSleepDuration(final int duration) {
         Settings.System.putInt(
-                getApp().getContentResolver(),
+                BaseUtil.getApplication().getContentResolver(),
                 Settings.System.SCREEN_OFF_TIMEOUT,
                 duration
         );
@@ -281,7 +298,7 @@ public final class ScreenUtils {
     public static int getSleepDuration() {
         try {
             return Settings.System.getInt(
-                    getApp().getContentResolver(),
+                    BaseUtil.getApplication().getContentResolver(),
                     Settings.System.SCREEN_OFF_TIMEOUT
             );
         } catch (Settings.SettingNotFoundException e) {
@@ -296,7 +313,7 @@ public final class ScreenUtils {
      * @return {@code true}: yes<br>{@code false}: no
      */
     public static boolean isTablet() {
-        return (getApp().getResources().getConfiguration().screenLayout
+        return (BaseUtil.getApplication().getResources().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
@@ -330,7 +347,7 @@ public final class ScreenUtils {
                                     final int sizeInPx,
                                     final boolean isVerticalSlide) {
         final DisplayMetrics systemDm = Resources.getSystem().getDisplayMetrics();
-        final DisplayMetrics appDm = getApp().getResources().getDisplayMetrics();
+        final DisplayMetrics appDm = BaseUtil.getApplication().getResources().getDisplayMetrics();
         final DisplayMetrics activityDm = activity.getResources().getDisplayMetrics();
         if (isVerticalSlide) {
             activityDm.density = activityDm.widthPixels / (float) sizeInPx;
@@ -352,7 +369,7 @@ public final class ScreenUtils {
      */
     public static void cancelAdaptScreen(final Activity activity) {
         final DisplayMetrics systemDm = Resources.getSystem().getDisplayMetrics();
-        final DisplayMetrics appDm = getApp().getResources().getDisplayMetrics();
+        final DisplayMetrics appDm = BaseUtil.getApplication().getResources().getDisplayMetrics();
         final DisplayMetrics activityDm = activity.getResources().getDisplayMetrics();
         activityDm.density = systemDm.density;
         activityDm.scaledDensity = systemDm.scaledDensity;
@@ -370,41 +387,7 @@ public final class ScreenUtils {
      */
     public static boolean isAdaptScreen() {
         final DisplayMetrics systemDm = Resources.getSystem().getDisplayMetrics();
-        final DisplayMetrics appDm = getApp().getResources().getDisplayMetrics();
+        final DisplayMetrics appDm = BaseUtil.getApplication().getResources().getDisplayMetrics();
         return systemDm.density != appDm.density;
-    }
-
-    /**
-     * Return the context of Application object.
-     *
-     * @return the context of Application object
-     */
-    private static Application application = null;
-    public static Application getApp() {
-        if(application != null){
-            return application;
-        }
-        try {
-            @SuppressLint("PrivateApi")
-            Class<?> activityThread = Class.forName("android.app.ActivityThread");
-            Object at = activityThread.getMethod("currentActivityThread").invoke(null);
-            Object app = activityThread.getMethod("getApplication").invoke(at);
-            if (app == null) {
-                throw new NullPointerException("u should init first");
-            }
-            application = (Application) app;
-            return application;
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        throw new NullPointerException("u should init first");
-
-
     }
 }
