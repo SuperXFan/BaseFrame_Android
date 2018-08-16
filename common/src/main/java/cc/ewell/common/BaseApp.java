@@ -2,6 +2,8 @@ package cc.ewell.common;
 
 import android.app.Application;
 
+import cc.ewell.common.utils.BaseUtil;
+
 public abstract class BaseApp extends Application {
 
     private ApplicationComponent mApplicationComponent;
@@ -9,6 +11,7 @@ public abstract class BaseApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        BaseUtil.init(this);//初始话BaseUtil 会有app实例和相关生命周期的使用
         initInjector();
     }
 

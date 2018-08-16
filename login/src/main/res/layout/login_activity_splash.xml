@@ -23,24 +23,24 @@
         android:textSize="@dimen/text_size_big_18dp" />
 
     <TextView
-        android:id="@+id/company_english_name_view"
+        android:id="@+id/gologin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:text="HangZhou Ewell Technology Co,,Ltd."
+        android:text="去登录"
         android:textColor="#a5a5a5"
         android:textSize="@dimen/text_size_small_12dp" />
 
     <TextView
-        android:id="@+id/company_chinese_name_view"
+        android:id="@+id/permission"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/company_english_name_view"
+        android:layout_above="@id/gologin"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="2dp"
-        android:text="杭州医惠科技有限公司"
+        android:text="权限测试"
         android:textColor="#a5a5a5"
         android:textSize="@dimen/text_size_small_12dp" />
 
