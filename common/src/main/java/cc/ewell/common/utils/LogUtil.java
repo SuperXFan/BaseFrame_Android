@@ -1,5 +1,6 @@
 package cc.ewell.common.utils;
 
+import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -14,6 +15,10 @@ public class LogUtil {
 
     public static boolean isDebug(){
         return  DEBUG;
+    }
+
+    public static void init(){
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
 
     public static void i(String message, Object... args) {
