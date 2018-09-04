@@ -1,5 +1,7 @@
 package cc.ewell.common.utils;
 
+import android.util.Log;
+
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
@@ -12,6 +14,7 @@ public class LogUtil {
 
     // 是否打印LOG, 发布时候将DEBUG改成false
     private static boolean DEBUG = true;
+    private static String NO_FORMATE_KEY = "no_formate_key";
 
     public static boolean isDebug(){
         return  DEBUG;
@@ -60,6 +63,13 @@ public class LogUtil {
     public static void json(String json) {
         if (DEBUG) {
             Logger.json(json);
+        }
+    }
+
+
+    public static void noFormateInfo(String info){
+        if(DEBUG){
+            Log.e(NO_FORMATE_KEY,info);
         }
     }
 

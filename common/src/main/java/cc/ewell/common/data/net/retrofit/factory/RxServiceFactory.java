@@ -59,7 +59,7 @@ public class RxServiceFactory {
             okBuilder.addInterceptor( new HttpLoggingInterceptor( new HttpLoggingInterceptor.Logger() {
                 @Override
                 public void log(String message) {
-                    LogUtil.i(message);
+                    LogUtil.noFormateInfo(message);
                 }
             }).setLevel(HttpLoggingInterceptor.Level.BODY));//网络和日志拦截
 //        }

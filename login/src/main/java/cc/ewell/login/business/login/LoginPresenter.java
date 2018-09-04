@@ -94,13 +94,16 @@ public class LoginPresenter implements LoginContract.Presenter {
         }
 
         Map<String, String> param = new HashMap<>();
-        param.put(ServerConstant.USER_NAME_KEY, username);
-        param.put(ServerConstant.USER_PWD_KEY, password);
-        param.put(ServerConstant.CID_KEY, "1235423542354");
-        param.put(ServerConstant.TIMEOUT_KEY, ServerConstant.TIME_OUT_VALUE + "");
+//        param.put(ServerConstant.USER_NAME_KEY, username);
+//        param.put(ServerConstant.USER_PWD_KEY, password);
+//        param.put(ServerConstant.CID_KEY, "1235423542354");
+//        param.put(ServerConstant.TIMEOUT_KEY, ServerConstant.TIME_OUT_VALUE + "");
+        param.put("method","hidoctor.hospital.list");
+        param.put("format","json");
+        param.put("v","1.0");
 
-        subscription = RxBaseApi.getDefault(mContext, CommonServerConstant.SERVER_IP_PORT + CommonServerConstant.SERVER_PATH, null)
-                .executePost(mContext, new LoginResultSubscriber(), LoginInfo.class, ServerConstant.LOGIN_PATH, param);
+        subscription = RxBaseApi.getDefault(mContext, "http://gm.api.hidoctor.cc", null)
+                .executePost(mContext, new LoginResultSubscriber(), LoginInfo.class, "/router/rest", param);
 
     }
 
